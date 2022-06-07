@@ -20,6 +20,21 @@ public class SliderHandlerScript : MonoBehaviour
     public void UpdateText(Text textObject)
     {
         textObject.text = this.GetComponent<Slider>().value.ToString();
+        //GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().verticalForce = this.GetComponent<Slider>().value;
+    }
+    
+    public void UpdateVerticalForce()
+    {
         GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().verticalForce = this.GetComponent<Slider>().value;
+    }
+
+    public void UpdateHorizontalForce()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().horizontalForce = this.GetComponent<Slider>().value;
+    }
+
+    public void UpdateGravityScale()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().gravityScale = this.GetComponent<Slider>().value;
     }
 }
