@@ -18,6 +18,7 @@ public class ButtonScript : MonoBehaviour
 
     public void Advance()
     {
+        GameObject.Find("Froggy").GetComponent<FroggyScript>().Reset();
         GameObject.Find("OverlayManager").GetComponent<OverlayManager>().Advance();
     }
 }

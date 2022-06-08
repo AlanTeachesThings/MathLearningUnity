@@ -5,6 +5,7 @@ using UnityEngine;
 public class Overlay18Script : MonoBehaviour
 {
     public GameObject FroggyObject;
+    public int frame;
     
     // Start is called before the first frame update
     void Start()
@@ -20,16 +21,12 @@ public class Overlay18Script : MonoBehaviour
 
     public void Activate()
     {
-        GameObject.Destroy(GameObject.Find("Froggy"));
-        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, 0f, 0f), Quaternion.identity);
-        newFroggy.name = "Froggy";
-        newFroggy.GetComponent<Rigidbody2D>().WakeUp();
         StartCoroutine(DelayedFroggyJump());
     }
 
     IEnumerator DelayedFroggyJump()
     {
         yield return new WaitForSeconds(1);
-        GameObject.Find("Froggy").SendMessage("DrawAnimJump");
+        GameObject.Find("Froggy").SendMessage("DrawAnimJump", frame);
     }
 }

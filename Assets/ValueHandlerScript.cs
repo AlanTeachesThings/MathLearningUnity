@@ -8,7 +8,10 @@ public class ValueHandlerScript : MonoBehaviour
     public float horizontalForce = 0;
     public float verticalForce = 0;
     public float gravityScale = 0;
-    public float[] animHeights = { 999, 999, 999, 999, 999 };
+    public Vector2[] animHeights;
+
+    //private bool draw = false;
+    //private bool animDraw = false;
 
     // Start is called before the first frame update
     void Start()
