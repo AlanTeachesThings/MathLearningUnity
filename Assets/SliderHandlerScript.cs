@@ -37,4 +37,24 @@ public class SliderHandlerScript : MonoBehaviour
     {
         GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().gravityScale = this.GetComponent<Slider>().value;
     }
+
+    public void UpdateFrequency()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().frequency = this.GetComponent<Slider>().value;
+    }
+    
+    public void UpdateAmplitude()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().amplitude = this.GetComponent<Slider>().value;
+    }
+
+    public void UpdateFriction()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().icePlatformFriction = this.GetComponent<Slider>().value/10;
+    }
+
+    public void UpdateBounciness()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().bouncyPlatformBounciness = this.GetComponent<Slider>().value / 10;
+    }
 }

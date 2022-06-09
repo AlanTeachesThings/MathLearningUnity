@@ -68,7 +68,7 @@ public class FroggyScript : MonoBehaviour
             }
             else
             {
-                interval = 0.05f;
+                interval = 0.15f;
             }
             if (r.velocity.magnitude > 0)
             {
@@ -78,8 +78,11 @@ public class FroggyScript : MonoBehaviour
                 {
                     if (!animDraw)
                     {
-                        drawObjects.Add(GameObject.Instantiate(drawObject, transform.position - new Vector3(0.5f, 0.5f, 0f), Quaternion.identity));
-                        Debug.Log(drawObjects.Count);
+                        var newDrawObject = GameObject.Instantiate(drawObject, transform.position - new Vector3(0.5f, 0.5f, 0f), Quaternion.identity);
+                        var drawPosition = c.WorldToScreenPoint(transform.position);
+                        newDrawObject.transform.Find("Canvas").transform.Find("Circle").GetComponent<RectTransform>().anchoredPosition = new Vector2(drawPosition.x, drawPosition.y - 25);
+                        newDrawObject.transform.Find("Canvas").transform.Find("Circle").transform.Find("Text").GetComponent<Text>().text = "X:" + (drawPosition.x -130).ToString("#") + " Y:" + (drawPosition.y-210).ToString("#");
+                        drawObjects.Add(newDrawObject);
                     }
                     else
                     {
@@ -105,25 +108,34 @@ public class FroggyScript : MonoBehaviour
 
     public void Jump()
     {
-        draw = false;
-        r.gravityScale = v.gravityScale;
-        //Debug.Log("Jumping!");
-        r.AddForce(new Vector3(v.horizontalForce, v.verticalForce, 0), ForceMode2D.Impulse);
+        if (Mathf.Abs(r.velocity.y) < 0.5)
+        {
+            draw = false;
+            r.gravityScale = v.gravityScale;
+            //Debug.Log("Jumping!");
+            r.AddForce(new Vector3(v.horizontalForce, v.verticalForce, 0), ForceMode2D.Impulse);
+        }
     }
 
     public void DrawJump()
     {
-        draw = true;
-        r.gravityScale = v.gravityScale;
-        //Debug.Log("Jumping!");
-        r.AddForce(new Vector3(v.horizontalForce, v.verticalForce, 0), ForceMode2D.Impulse);
+        if (Mathf.Abs(r.velocity.y) < 0.5)
+        {
+            draw = true;
+            r.gravityScale = v.gravityScale;
+            //Debug.Log("Jumping!");
+            r.AddForce(new Vector3(v.horizontalForce, v.verticalForce, 0), ForceMode2D.Impulse);
+        }
     }
 
     public void DrawAnimJump(int frameToDraw)
     {
-        animDraw = true;
-        animFrame = frameToDraw;
-        DrawJump();
+        if (Mathf.Abs(r.velocity.y) < 0.5)
+        {
+            animDraw = true;
+            animFrame = frameToDraw;
+            DrawJump();
+        }
     }
 
     public void Reset()
@@ -132,7 +144,7 @@ public class FroggyScript : MonoBehaviour
         {
             GameObject.Destroy(drawObject.gameObject);
         }
-        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, 0f, 0f), Quaternion.identity);
+        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, -0.445f, 0f), Quaternion.identity);
         newFroggy.name = "Froggy";
         newFroggy.GetComponent<Rigidbody2D>().WakeUp();
         GameObject.Destroy(this.gameObject);
@@ -144,7 +156,7 @@ public class FroggyScript : MonoBehaviour
         {
             GameObject.Destroy(drawObject.gameObject);
         }
-        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, 0f, 0f), Quaternion.identity);
+        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, -0.445f, 0f), Quaternion.identity);
         newFroggy.name = "Froggy";
         newFroggy.GetComponent<Rigidbody2D>().WakeUp();
         newFroggy.SendMessage("JumpWithDelay", frametoDraw);

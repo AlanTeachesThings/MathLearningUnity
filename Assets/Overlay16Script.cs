@@ -20,10 +20,6 @@ public class Overlay16Script : MonoBehaviour
 
     public void Activate()
     {
-        GameObject.Destroy(GameObject.Find("Froggy"));
-        var newFroggy = GameObject.Instantiate(FroggyObject, new Vector3(-5.39f, 0f, 0f), Quaternion.identity);
-        newFroggy.name = "Froggy";
-        newFroggy.GetComponent<Rigidbody2D>().WakeUp();
         StartCoroutine(DelayedFroggyJump());
     }
 

@@ -32,4 +32,12 @@ public class OverlayManager : MonoBehaviour
         basicOverlays[currentOverlay].SetActive(true);
         basicOverlays[currentOverlay].SendMessage("Activate",null, SendMessageOptions.DontRequireReceiver);
     }
+
+    public void Return()
+    {
+        basicOverlays[currentOverlay].SetActive(false);
+        currentOverlay--;
+        basicOverlays[currentOverlay].SetActive(true);
+        basicOverlays[currentOverlay].SendMessage("Activate", null, SendMessageOptions.DontRequireReceiver);
+    }
 }

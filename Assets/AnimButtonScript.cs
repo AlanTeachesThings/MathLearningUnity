@@ -12,7 +12,7 @@ public class AnimButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Find("Text").GetComponent<Text>().text = (transform.position.x - 130).ToString("#")+","+ (transform.position.y-210).ToString("#");
+        transform.Find("Text").GetComponent<Text>().text = "X:"+(transform.position.x - 130).ToString("#")+", Y:"+ (transform.position.y-210).ToString("#");
     }
 
     // Update is called once per frame

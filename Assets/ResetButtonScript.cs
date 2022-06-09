@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResetButtonScript : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class ResetButtonScript : MonoBehaviour
         //Debug.Log("Destroying Froggy!");
         //GameObject.Destroy(GameObject.Find("Froggy"));
         GameObject.Find("Froggy").SendMessage("Reset");
+        if (GameObject.Find("JumpCounter")!= null)
+        {
+            GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted = 0;
+            GameObject.Find("JumpCounter").GetComponent<Text>().text = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted.ToString();
+        }
         
     }
 
