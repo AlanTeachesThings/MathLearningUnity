@@ -21,6 +21,8 @@ public class Overlay18Script : MonoBehaviour
 
     public void Activate()
     {
+        GameObject.Find("Main Camera").GetComponent<CameraControlScript>().Zoom(5f, new Vector3(0f, 0f, -20f));
+        GameObject.Find("Main Camera").GetComponent<CameraControlScript>().trackPlayer = false;
         StartCoroutine(DelayedFroggyJump());
     }
 

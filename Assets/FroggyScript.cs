@@ -86,10 +86,10 @@ public class FroggyScript : MonoBehaviour
                     }
                     else
                     {
-                        var newAnimButton = GameObject.Instantiate(animDrawObject, transform.position - new Vector3(0.5f, 0.5f, 0f), Quaternion.identity);
+                        var newAnimButton = GameObject.Instantiate(animDrawObject, transform.position - new Vector3(0.5f, 6f, 0f), Quaternion.identity);
                         drawObjects.Add(newAnimButton);
                         var drawPosition = c.WorldToScreenPoint(transform.position);
-                        newAnimButton.transform.Find("Canvas").transform.Find("Button").GetComponent<RectTransform>().anchoredPosition = new Vector2(drawPosition.x, drawPosition.y-25);
+                        newAnimButton.transform.Find("Canvas").transform.Find("Button").GetComponent<RectTransform>().anchoredPosition = new Vector2(drawPosition.x, drawPosition.y+10);
                         newAnimButton.transform.Find("Canvas").transform.Find("Button").GetComponent<AnimButtonScript>().animFrame = animFrame;
                         newAnimButton.transform.Find("Canvas").transform.Find("Button").GetComponent<AnimButtonScript>().yPosition = transform.position.y;
                         newAnimButton.transform.Find("Canvas").transform.Find("Button").GetComponent<AnimButtonScript>().upOrDown = UpOrDown();

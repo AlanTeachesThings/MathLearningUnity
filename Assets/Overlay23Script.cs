@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Overlay32Script : MonoBehaviour
+public class Overlay23Script : MonoBehaviour
 {
     private ValueHandlerScript v;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void Activate()
@@ -22,15 +22,6 @@ public class Overlay32Script : MonoBehaviour
 
         GameObject.Find("Main Camera").GetComponent<CameraControlScript>().Zoom(10f, new Vector3(5f, 2f, -20f));
         GameObject.Find("Main Camera").GetComponent<CameraControlScript>().trackPlayer = true;
-
-        GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().spawnHazard = true;
-        GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().Reset();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void FrogLanded()

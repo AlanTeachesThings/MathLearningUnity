@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class FrogLandingScript : MonoBehaviour
 {
 
-    public LevelGenerator generator;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +20,12 @@ public class FrogLandingScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        //Debug.Log("FrogLanded!");
         if (other.gameObject.name == "Froggy")
         {
             foreach (GameObject foundObject in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
             {
+                //Debug.Log("Sending Message to " + foundObject);
                 foundObject.SendMessage("FrogLanded", transform.position.x- other.transform.position.x, SendMessageOptions.DontRequireReceiver);
             }
         }
