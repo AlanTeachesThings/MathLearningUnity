@@ -20,7 +20,7 @@ public class ResetButtonScript : MonoBehaviour
 
     public void ResetFroggy()
     {
-        //Debug.Log("Destroying Froggy!");
+        //Debug.Log(GameObject.Find("JumpCounter"));
         //GameObject.Destroy(GameObject.Find("Froggy"));
         GameObject.Find("Froggy").SendMessage("Reset");
         if (GameObject.Find("JumpCounter")!= null)

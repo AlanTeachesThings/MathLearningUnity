@@ -18,7 +18,7 @@ public class Overlay15Script : MonoBehaviour
         v = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>();
         GameObject.Find("VerticalForce").transform.Find("Slider").GetComponent<Slider>().value = v.verticalForce;
         GameObject.Find("HorizontalForce").transform.Find("Slider").GetComponent<Slider>().value = v.horizontalForce;
-        GameObject.Find("Gravity").transform.Find("Slider").GetComponent<Slider>().value = v.gravityScale;
+        GameObject.Find("Gravity").transform.Find("Slider").SendMessage("Activate");
     }
 
     // Update is called once per frame

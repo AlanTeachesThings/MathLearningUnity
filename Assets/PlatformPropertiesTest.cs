@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlatformPropertiesTest : MonoBehaviour
 {
@@ -12,9 +13,18 @@ public class PlatformPropertiesTest : MonoBehaviour
     private ValueHandlerScript v;
     private Rigidbody2D c;
     private CameraControlScript cam;
+    public Slider FrictionSlider;
+    public Text FrictionLabel;
+    public Slider BouncinessSlider;
+    public Text BouncinessLabel;
 
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    void Activate()
     {
         platform = GameObject.Find("Island_2");
         var spawnLocation = platform.transform.position;
@@ -25,7 +35,12 @@ public class PlatformPropertiesTest : MonoBehaviour
         v = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>();
         c.sharedMaterial = icePlatformMaterial;
         cam = GameObject.Find("Main Camera").GetComponent<CameraControlScript>();
-        cam.Zoom(10f, new Vector3(5f,2f,-20f));
+        cam.Zoom(10f, new Vector3(5f, 2f, -20f));
+        if (FrictionSlider != null)
+        {
+            FrictionSlider.value = v.icePlatformFriction * 10f;
+            FrictionLabel.text = (v.icePlatformFriction * 10f).ToString();
+        }
     }
 
     // Update is called once per frame

@@ -91,8 +91,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2135164144122373421}
-  - component: {fileID: 11055888212965210}
   - component: {fileID: 8028989962298364806}
+  - component: {fileID: 6099780622996197210}
   m_Layer: 0
   m_Name: Hazard
   m_TagString: Untagged
@@ -116,21 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &11055888212965210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692021126307526169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3245b0333cf2874e8a154106064cf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer1: {fileID: 1869836208674237960}
-  layer2: {fileID: 8509826140840259364}
-  spinSpeed: 15
 --- !u!58 &8028989962298364806
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +132,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6099780622996197210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692021126307526169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3245b0333cf2874e8a154106064cf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer1: {fileID: 8509826140840259364}
+  layer2: {fileID: 1869836208674237960}
+  spinSpeed: 10
 --- !u!1 &8509826140840259364
 GameObject:
   m_ObjectHideFlags: 0

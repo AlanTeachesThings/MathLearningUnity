@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Overlay13Script : MonoBehaviour
 {
@@ -19,5 +20,6 @@ public class Overlay13Script : MonoBehaviour
     public void Activate()
     {
         GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().verticalForce = 0;
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().horizontalForce = GameObject.Find("HorizontalForce").transform.Find("Slider").GetComponent<Slider>().value;
     }
 }

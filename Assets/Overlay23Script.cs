@@ -18,7 +18,7 @@ public class Overlay23Script : MonoBehaviour
         v = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>();
         GameObject.Find("VerticalForce").transform.Find("Slider").GetComponent<Slider>().value = v.verticalForce;
         GameObject.Find("HorizontalForce").transform.Find("Slider").GetComponent<Slider>().value = v.horizontalForce;
-        GameObject.Find("Gravity").transform.Find("Slider").GetComponent<Slider>().value = v.gravityScale;
+        GameObject.Find("Gravity").transform.Find("Slider").SendMessage("Activate");
 
         GameObject.Find("Main Camera").GetComponent<CameraControlScript>().Zoom(10f, new Vector3(5f, 2f, -20f));
         GameObject.Find("Main Camera").GetComponent<CameraControlScript>().trackPlayer = true;

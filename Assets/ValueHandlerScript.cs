@@ -11,7 +11,7 @@ public class ValueHandlerScript : MonoBehaviour
     public Vector2[] animHeights;
     public float frequency = 0;
     public float amplitude = 0;
-    public float icePlatformFriction = 2;
+    public float icePlatformFriction = 2f;
     public float bouncyPlatformBounciness = 0;
 
     public int jumpsCounted = 0;

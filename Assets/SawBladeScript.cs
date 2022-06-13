@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SawBladeScript : MonoBehaviour
 {
@@ -25,17 +26,23 @@ public class SawBladeScript : MonoBehaviour
     {
         //Debug.Log(v.frequency);
         elapsedTime += Time.deltaTime;
-        layer1.transform.Rotate(new Vector3(0f, 0f, 0.1f));
-        layer2.transform.Rotate(new Vector3(0f, 0f, -0.1f));
+        layer1.transform.Rotate(new Vector3(0f, 0f, 0.1f * spinSpeed));
+        //Debug.Log(layer1.transform.rotation);
+        layer2.transform.Rotate(new Vector3(0f, 0f, -0.1f * spinSpeed));
         transform.position = spawnLocation + new Vector3(0f, Mathf.Sin(elapsedTime * v.frequency) * v.amplitude, 0f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit the sawblade");
+        Debug.Log(other + " hit " + this);
         if (other.gameObject.name == "Froggy")
         {
-            other.gameObject.SendMessage("Reset");
+            GameObject.Find("Froggy").SendMessage("Reset");
+            if (GameObject.Find("JumpCounter") != null)
+            {
+                GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted = 0;
+                GameObject.Find("JumpCounter").GetComponent<Text>().text = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted.ToString();
+            }
         }
     }
 }

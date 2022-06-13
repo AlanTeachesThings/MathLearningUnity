@@ -10,13 +10,16 @@ public class LevelGenerator : MonoBehaviour
     private List<GameObject> hazards;
     public GameObject platformPrefab;
     public GameObject hazardPrefab;
+    public GameObject icyPlatformPrefab;
+    public GameObject bouncyPlatformPrefab;
     public bool spawnHazard;
+    public bool spawnAltPlatforms = false;
     
     // Start is called before the first frame update
     void Start()
     {
         //GameObject.Find("Island_2").GetComponent<PlatformChecker>().generator = this;
-        Debug.Log("Level Manager Starting up!");
+        //Debug.Log("Level Manager Starting up!");
         platforms = new List<GameObject>();
         hazards = new List<GameObject>();
         SpawnPlatform(0f);
@@ -30,8 +33,23 @@ public class LevelGenerator : MonoBehaviour
 
     public void SpawnPlatform(float horizontalOffset)
     {
-        GameObject newPlatform = GameObject.Instantiate(platformPrefab, new Vector3(platformSpacing + (platformSpacing * (float)platforms.Count) + 6f - horizontalOffset, -2.5f, 0f), Quaternion.identity);
+        GameObject platformToUse = platformPrefab;
+        float randomFloat = Random.value;
+        //Debug.Log(spawnAltPlatforms);
+        if((spawnAltPlatforms)&&(randomFloat > 0.5f))
+        {
+            if (randomFloat > 0.75f)
+            {
+                platformToUse = icyPlatformPrefab;
+            }
+            else
+            {
+                platformToUse = bouncyPlatformPrefab;
+            }
+        }
+        GameObject newPlatform = GameObject.Instantiate(platformToUse, new Vector3(platformSpacing + (platformSpacing * (float)platforms.Count) + 6f - horizontalOffset, -2.5f, 0f), Quaternion.identity);
         platforms.Add(newPlatform);
+
         if (spawnHazard)
         {
             GameObject newHazard = GameObject.Instantiate(hazardPrefab, new Vector3(platformSpacing + (platformSpacing * (float)platforms.Count) - 12f - horizontalOffset, 0f, 0f), Quaternion.identity);

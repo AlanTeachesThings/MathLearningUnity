@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Overlay45Script : MonoBehaviour
+{
+
+    private ValueHandlerScript v;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    public void Activate()
+    {
+        v = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>();
+        GameObject.Find("VerticalForce").transform.Find("Slider").GetComponent<Slider>().value = v.verticalForce;
+        GameObject.Find("HorizontalForce").transform.Find("Slider").GetComponent<Slider>().value = v.horizontalForce;
+        GameObject.Find("Gravity").transform.Find("Slider").SendMessage("Activate");
+
+        GameObject.Find("Main Camera").GetComponent<CameraControlScript>().Zoom(10f, new Vector3(5f, 2f, -20f));
+        GameObject.Find("Main Camera").GetComponent<CameraControlScript>().trackPlayer = true;
+
+        GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().spawnHazard = true;
+        GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().Reset();
+        GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().spawnAltPlatforms = true;
+        Debug.Log("Setting value to " + GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().spawnAltPlatforms);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void FrogLanded()
+    {
+        GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted++;
+        GameObject.Find("JumpCounter").GetComponent<Text>().text = GameObject.Find("ValueHandler").GetComponent<ValueHandlerScript>().jumpsCounted.ToString();
+    }
+}
